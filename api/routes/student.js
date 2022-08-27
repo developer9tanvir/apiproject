@@ -1,5 +1,7 @@
 import express from 'express';
-import { createStudent, deleteStudent, getAllStudents, getSingleStudent, updateStudent } from '../middlewares/studentController.js';
+import { createStudent, deleteStudent, getAllStudents, getSingleStudent, updateStudent  } from '../controllers/studentController.js';
+import { authMiddleware } from '../middlewares/authMiddleware.js';
+
 
 
 
@@ -9,11 +11,12 @@ const Router = express.Router();
 
 
 // Route
-Router.route('/').get(getAllStudents).post(createStudent);
-Router.route('/:id').get(getSingleStudent).delete(deleteStudent).put(updateStudent).patch(updateStudent);
+Router.route('/').get(authMiddleware, getAllStudents).post(authMiddleware, createStudent);
+Router.route('/:id').get(authMiddleware, getSingleStudent).delete(authMiddleware, deleteStudent).put(authMiddleware, updateStudent).patch(authMiddleware, updateStudent);
 
 
 // export Default Router
 export default Router;
+
 
 

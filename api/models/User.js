@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 
 // create student schema
-const studentSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
 
 
     name : {
@@ -10,6 +10,7 @@ const studentSchema = mongoose.Schema({
         required: true,
         trim : true
     },
+    
 
     email : {
         type : String,
@@ -21,8 +22,7 @@ const studentSchema = mongoose.Schema({
     cell : {
         type : String,
         required: true,
-        trim : true,
-        unique : true
+
     },
 
     username : {
@@ -37,7 +37,7 @@ const studentSchema = mongoose.Schema({
         required: true
     },
 
-    grnder : {
+    gender : {
         type : String
     },
 
@@ -48,7 +48,8 @@ const studentSchema = mongoose.Schema({
     },
 
     photo : {
-        type : String
+        type : String,
+        default : "aveter.png"
     },
 
     isAdmin : {
@@ -74,4 +75,4 @@ const studentSchema = mongoose.Schema({
 
 
 // export modle
-export default mongoose.model('Student', studentSchema )
+export default mongoose.model('User', userSchema );
